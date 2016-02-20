@@ -91,7 +91,7 @@ function send() {
     var callback = function (json) {
     
     };
-    HTTP.post("storeludopos.php", values, callback, null);
+    HTTP.post("storeludopos.php", values, callback, null); 
 }
 function receive() {
     var callback = function (json) {

@@ -40,7 +40,7 @@ HTTP.newRequest = function() {
             var factory = HTTP._factories[i];
             var request = factory();
             if (request != null) {
-                HTTP._factory = factory;
+                HTTP._factory = factory; 
                 return request;
             }
         }
@@ -155,7 +155,7 @@ HTTP.post = function(url, values, callback, errorHandler) {
     request.onreadystatechange = function() {
         if (request.readyState == 4) {
             if (request.status == 200) {
-                callback(HTTP._getResponse(request));
+                callback(HTTP._getResponse(request)); 
             }
             else {
                 if (errorHandler) errorHandler(request.status,
@@ -203,7 +203,7 @@ HTTP.encodeFormData = function(data) {
  */
 HTTP._getResponse = function(request) {
     // Check the content type returned by the server
-    switch(request.getResponseHeader("Content-Type")) {
+    switch(request.getResponseHeader("Content-Type").slice(0, request.getResponseHeader("Content-Type").indexOf(";"))) { // M.O.B. added slice
     case "text/xml":
         // If it is an XML document, use the parsed Document object
         return request.responseXML;

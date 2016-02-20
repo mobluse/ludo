@@ -52,6 +52,7 @@ function send() {
 }
 function receive() {
     var callback = function (json) {
+        //json = JSON.parse(json);
         var id = "d1";
         dice = json[id + "v"];
         var imgDice = document.getElementById("imgDice1");
